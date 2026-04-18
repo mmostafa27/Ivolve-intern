@@ -1,0 +1,27 @@
+services:
+
+   app: 
+      build: . 
+      container_name: App-service 
+      ports: 
+        - "3000:3000"
+      environment: 
+        - DB_HOST=db_service
+          DB_USER=appuser
+          DB_PASSWORD=pass123
+      depends_on:
+        - db 
+
+   db:
+     image: mysql:8
+     container_name: db_service
+     environment: 
+       - MYSQL_ROOT_PASSWORD=pass123
+       - MYSQL_DATABASE=ivolve
+       - MYSQL_USER=appuser
+       - MYSQL_PASSWORD=pass123
+     volumes: 
+        - db_data:/var/lib/mysql
+
+volumes: 
+    db_data: 
