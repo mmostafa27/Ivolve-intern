@@ -7,14 +7,14 @@ services:
         - "3000:3000"
       environment: 
         - DB_HOST=db_service
-          DB_USER=appuser
-          DB_PASSWORD=pass123
+        - DB_USER=appuser
+        - DB_PASSWORD=pass123
       depends_on:
         - db 
 
    db:
      image: mysql:8
-     container_name: db_service
+     container_name: db-service
      environment: 
        - MYSQL_ROOT_PASSWORD=pass123
        - MYSQL_DATABASE=ivolve
